@@ -8,7 +8,7 @@
     checksum: "{{ composer_checksum }}"
   tags: hswong3i.composer
 
-- name: install with composer installer
+- name: install composer with installer
   shell: |
     php {{ composer_installer }} --install-dir={{ composer_install_dir }} --filename=composer
   args:
@@ -16,6 +16,7 @@
   tags: hswong3i.composer
 
 - name: composer self-update
-  shell: |
-    composer self-update
+  composer:
+    command: "self-update"
+    working_dir: "/root/.composer"
   tags: hswong3i.composer
