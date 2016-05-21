@@ -4,4 +4,5 @@
 - hosts: localhost
   remote_user: root
   roles:
+    - hswong3i.php
     - ansible-role-composer
