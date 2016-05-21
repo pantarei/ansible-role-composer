@@ -16,6 +16,6 @@
   tags: hswong3i.composer
 
 - name: composer self-update
-  shell: |
-    composer self-update
+  composer:
+    command: "self-update"
   tags: hswong3i.composer
