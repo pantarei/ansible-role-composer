@@ -16,7 +16,8 @@
   tags: hswong3i.composer
 
 - name: composer self-update
-  composer:
-    command: "self-update"
-    working_dir: "/root/.composer"
+  shell: |
+    composer self-update
+  register: composer_self_update_result
+  changed_when: composer_self_update_result.rc != 0
   tags: hswong3i.composer
