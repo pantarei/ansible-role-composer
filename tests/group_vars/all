@@ -1,0 +1,6 @@
+composer_global_require: [
+  "drush/drush:@stable",
+  "fabpot/php-cs-fixer:@stable",
+  "phpunit/phpunit:@stable",
+  "sami/sami:@stable",
+]

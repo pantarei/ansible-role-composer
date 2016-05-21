@@ -5,3 +5,10 @@ composer_checksum: "sha384:92102166af5abdb03f49ce52a40591073a7b859a86e8ff13338cf
 composer_install_dir: "/usr/local/bin"
 composer_installer: "/tmp/composer-setup.php"
 composer_url: "https://getcomposer.org/installer"
+
+composer_global_require: [
+#  "drush/drush:@stable",
+#  "fabpot/php-cs-fixer:@stable",
+#  "phpunit/phpunit:@stable",
+#  "sami/sami:@stable",
+]
