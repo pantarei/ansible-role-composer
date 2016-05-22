@@ -1,5 +1,5 @@
 Ansible Role for Composer Installation.
-====================
+=======================================
 
 [![Build Status](https://travis-ci.org/pantarei/ansible-role-composer.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-composer)
 [![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-composer.svg)](https://github.com/pantarei/ansible-role-composer)
@@ -36,44 +36,46 @@ Role Variables
 </thead>
 <tbody>
 <tr class="odd">
-<td>composer_cache_valid_time</td>
+<td>composer_global_require</td>
 <td>no</td>
-<td>0</td>
+<td><code>[]</code></td>
 <td></td>
-<td>Pass value as <code>cache_valid_time</code> to <a href="http://docs.ansible.com/ansible/composer_module.html">composer module</a>.</td>
+<td>Package list for <code>composer global require</code>.</td>
 </tr>
 <tr class="even">
-<td>composer_name</td>
+<td>composer_home</td>
 <td>no</td>
-<td><a href="https://github.com/pantarei/ansible-role-composer/blob/master/defaults/main.yml">defaults/main.yml</a></td>
-<td><ul>
-<li><code>[]</code></li>
-<li><code>list</code></li>
-</ul></td>
-<td>Skip install packages if <code>[]</code>, or pass <code>list</code> to <a href="http://docs.ansible.com/ansible/composer_module.html">composer module</a>.</td>
+<td>/usr/share/composer</td>
+<td></td>
+<td><code>$COMPOSER_HOME</code> for <code>composer global require</code>.</td>
 </tr>
 <tr class="odd">
-<td>composer_repository_repo</td>
+<td>composer_install_dir</td>
 <td>no</td>
-<td><a href="https://github.com/pantarei/ansible-role-composer/blob/master/defaults/main.yml">defaults/main.yml</a></td>
-<td><ul>
-<li><code>[]</code></li>
-<li><code>list</code></li>
-</ul></td>
-<td>Skip adding APT repository if <code>[]</code>, or pass <code>list</code> to <a href="http://docs.ansible.com/ansible/composer_repository_module.html">composer_repository module</a>.</td>
+<td>/usr/bin</td>
+<td></td>
+<td>Target install directory for composer.</td>
 </tr>
 <tr class="even">
-<td>composer_upgrade</td>
+<td>composer_installer_checksum</td>
 <td>no</td>
+<td><a href="https://github.com/pantarei/ansible-role-composer/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td></td>
+<td>Checksum for composer installer.</td>
+</tr>
+<tr class="odd">
+<td>composer_installer_dest</td>
 <td>no</td>
-<td><ul>
-<li>no</li>
-<li>yes</li>
-<li>safe</li>
-<li>full</li>
-<li>dist</li>
-</ul></td>
-<td>Pass value as <code>upgrade</code> to <a href="http://docs.ansible.com/ansible/composer_module.html">composer module</a>.</td>
+<td>/tmp/composer-setup-php</td>
+<td></td>
+<td>Download archive filename for composer installer.</td>
+</tr>
+<tr class="even">
+<td>composer_installer_rul</td>
+<td>no</td>
+<td>https://getcomposer.org/installer</td>
+<td></td>
+<td>Download URL for composer installer.</td>
 </tr>
 </tbody>
 </table>
@@ -89,8 +91,11 @@ Example Playbook
     - hosts: all
       roles:
         - role: hswong3i.composer
-          composer_cache_valid_time: "0"
-          composer_upgrade: "full"
+          composer_global_require:
+            - "drush/drush:@stable"
+            - "fabpot/php-cs-fixer:@stable"
+            - "phpunit/phpunit:@stable"
+            - "sami/sami:@stable"
 
 License
 -------

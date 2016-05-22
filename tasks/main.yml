@@ -3,14 +3,14 @@
 
 - name: download composer installer
   get_url:
-    url: "{{ composer_url }}"
-    dest: "{{ composer_installer }}"
-    checksum: "{{ composer_checksum }}"
+    url: "{{ composer_installer_url }}"
+    dest: "{{ composer_installer_dest }}"
+    checksum: "{{ composer_installer_checksum }}"
   tags: hswong3i.composer
 
 - name: install composer with installer
   shell: |
-    php {{ composer_installer }} --install-dir={{ composer_install_dir }} --filename=composer
+    php {{ composer_installer_dest }} --install-dir={{ composer_install_dir }} --filename=composer
   args:
     creates: "{{ composer_install_dir }}/composer"
   tags: hswong3i.composer

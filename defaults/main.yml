@@ -1,11 +1,11 @@
 ---
 # defaults file for hswong3i.composer
 
-composer_checksum: "sha384:92102166af5abdb03f49ce52a40591073a7b859a86e8ff13338cf7db58a19f7844fbc0bb79b2773bf30791e935dbd938"
 composer_home: "/usr/share/composer"
 composer_install_dir: "/usr/bin"
-composer_installer: "/tmp/composer-setup.php"
-composer_url: "https://getcomposer.org/installer"
+composer_installer_checksum: "sha384:92102166af5abdb03f49ce52a40591073a7b859a86e8ff13338cf7db58a19f7844fbc0bb79b2773bf30791e935dbd938"
+composer_installer_dest: "/tmp/composer-setup.php"
+composer_installer_url: "https://getcomposer.org/installer"
 
 composer_global_require: [
 #  "drush/drush:@stable",
