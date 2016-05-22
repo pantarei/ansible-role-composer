@@ -19,7 +19,7 @@
   shell: |
     composer self-update
   register: composer_self_update_result
-  changed_when: composer_self_update_result.rc != 0
+  changed_when: "'You are already using composer' not in composer_self_update_result.stderr"
   tags: hswong3i.composer
 
 - name: prepare files
@@ -30,7 +30,7 @@
     mode: "{{ item.mode }}"
     state: "{{ item.state }}"
   with_items:
-    - { path: "/root/.composer", owner: "root", group: "root", mode: "0755", state: "directory" }
+    - { path: "{{ composer_home }}", owner: "root", group: "root", mode: "0755", state: "directory" }
   tags: hswong3i.composer
 
 - name: copy templates
@@ -42,19 +42,12 @@
     mode: "{{ item.mode }}"
   with_items:
     - { src: "etc/profile.d/composer.sh.j2", dest: "/etc/profile.d/composer.sh", owner: "root", group: "root", mode: "0644" }
-    - { src: "root/.composer/auth.json.j2", dest: "/root/.composer/auth.json", owner: "root", group: "root", mode: "0644" }
-  tags: hswong3i.composer
-
-- name: composer global init
-  shell: |
-    composer global init --no-interaction
-  register: composer_global_init_result
-  changed_when: composer_global_init_result.rc != 0
+    - { src: "usr/share/composer/auth.json.j2", dest: "{{ composer_home}}/auth.json", owner: "root", group: "root", mode: "0644" }
   tags: hswong3i.composer
 
 - name: composer global require
   shell: |
-    composer global require {{ item }} --no-interaction --no-update
+    COMPOSER_HOME={{ composer_home }} composer global require {{ item }} --no-interaction --no-update
   with_items: "{{ composer_global_require }}"
   register: composer_global_require_result
   changed_when: composer_global_require_result.rc != 0
@@ -62,7 +55,7 @@
 
 - name: composer global update
   shell: |
-    composer global update --no-interaction
+    COMPOSER_HOME={{ composer_home }} composer global update --no-interaction
   register: composer_global_update_result
-  changed_when: composer_global_update_result.rc != 0
+  changed_when: "'Nothing to install or update' not in composer_global_update_result.stderr"
   tags: hswong3i.composer
