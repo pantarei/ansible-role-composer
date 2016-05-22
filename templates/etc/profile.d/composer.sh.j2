@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+
+if [ -d "{{ composer_home }}/vendor/bin" ]; then
+    export PATH="$PATH:{{ composer_home }}/vendor/bin"
+fi

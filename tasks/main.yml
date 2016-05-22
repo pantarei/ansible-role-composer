@@ -3,14 +3,14 @@
 
 - name: download composer installer
   get_url:
-    url: "{{ composer_url }}"
-    dest: "{{ composer_installer }}"
-    checksum: "{{ composer_checksum }}"
+    url: "{{ composer_installer_url }}"
+    dest: "{{ composer_installer_dest }}"
+    checksum: "{{ composer_installer_checksum }}"
   tags: hswong3i.composer
 
-- name: install with composer installer
+- name: install composer with installer
   shell: |
-    php {{ composer_installer }} --install-dir={{ composer_install_dir }} --filename=composer
+    php {{ composer_installer_dest }} --install-dir={{ composer_install_dir }} --filename=composer
   args:
     creates: "{{ composer_install_dir }}/composer"
   tags: hswong3i.composer
@@ -18,4 +18,44 @@
 - name: composer self-update
   shell: |
     composer self-update
+  register: composer_self_update_result
+  changed_when: "'You are already using composer' not in composer_self_update_result.stderr"
+  tags: hswong3i.composer
+
+- name: prepare files
+  file:
+    path: "{{ item.path }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { path: "{{ composer_home }}", owner: "root", group: "root", mode: "0755", state: "directory" }
+  tags: hswong3i.composer
+
+- name: copy templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  with_items:
+    - { src: "etc/profile.d/composer.sh.j2", dest: "/etc/profile.d/composer.sh", owner: "root", group: "root", mode: "0644" }
+    - { src: "usr/share/composer/auth.json.j2", dest: "{{ composer_home}}/auth.json", owner: "root", group: "root", mode: "0644" }
+  tags: hswong3i.composer
+
+- name: composer global require
+  shell: |
+    COMPOSER_HOME={{ composer_home }} composer global require {{ item }} --no-interaction --no-update
+  with_items: "{{ composer_global_require }}"
+  register: composer_global_require_result
+  changed_when: composer_global_require_result.rc != 0
+  tags: hswong3i.composer
+
+- name: composer global update
+  shell: |
+    COMPOSER_HOME={{ composer_home }} composer global update --no-interaction
+  register: composer_global_update_result
+  changed_when: "'Nothing to install or update' not in composer_global_update_result.stderr"
   tags: hswong3i.composer
