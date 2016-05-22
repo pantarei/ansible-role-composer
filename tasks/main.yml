@@ -45,9 +45,16 @@
     - { src: "root/.composer/auth.json.j2", dest: "/root/.composer/auth.json", owner: "root", group: "root", mode: "0644" }
   tags: hswong3i.composer
 
+- name: composer global init
+  shell: |
+    composer global init --no-interaction
+  register: composer_global_init_result
+  changed_when: composer_global_init_result.rc != 0
+  tags: hswong3i.composer
+
 - name: composer global require
   shell: |
-    composer global require {{ item }}
+    composer global require {{ item }} --no-interaction --no-update
   with_items: "{{ composer_global_require }}"
   register: composer_global_require_result
   changed_when: composer_global_require_result.rc != 0
@@ -55,8 +62,7 @@
 
 - name: composer global update
   shell: |
-    composer global update
-  when: composer_global_require | length > 0
+    composer global update --no-interaction
   register: composer_global_update_result
   changed_when: composer_global_update_result.rc != 0
   tags: hswong3i.composer
