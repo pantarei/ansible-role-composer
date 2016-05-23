@@ -39,43 +39,46 @@ Role Variables
 <td>composer_global_require</td>
 <td>no</td>
 <td><code>[]</code></td>
-<td></td>
-<td>Package list for <code>composer global require</code>.</td>
+<td><ul>
+<li><code>[]</code></li>
+<li><code>list</code></li>
+</ul></td>
+<td>Skip install gloabl packages if <code>[]</code>, or pass list to <code>composer global require</code>.</td>
 </tr>
 <tr class="even">
 <td>composer_home</td>
 <td>no</td>
 <td>/usr/share/composer</td>
 <td></td>
-<td><code>$COMPOSER_HOME</code> for <code>composer global require</code>.</td>
+<td>Location for the <code>$COMPOSER_HOME</code> directory..</td>
 </tr>
 <tr class="odd">
 <td>composer_install_dir</td>
 <td>no</td>
 <td>/usr/bin</td>
 <td></td>
-<td>Target install directory for composer.</td>
+<td>Location for the composer install directory.</td>
 </tr>
 <tr class="even">
 <td>composer_installer_checksum</td>
 <td>no</td>
 <td><a href="https://github.com/pantarei/ansible-role-composer/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
-<td>Checksum for composer installer.</td>
+<td>Download archive sha256 checksum for cache during (re)install.</td>
 </tr>
 <tr class="odd">
 <td>composer_installer_dest</td>
 <td>no</td>
 <td>/tmp/composer-setup-php</td>
 <td></td>
-<td>Download archive filename for composer installer.</td>
+<td>Download archive filename for cache during (re)install.</td>
 </tr>
 <tr class="even">
 <td>composer_installer_rul</td>
 <td>no</td>
 <td>https://getcomposer.org/installer</td>
 <td></td>
-<td>Download URL for composer installer.</td>
+<td>URL for download composer installer.</td>
 </tr>
 </tbody>
 </table>
