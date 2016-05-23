@@ -17,7 +17,7 @@
 
 - name: composer self-update
   shell: |
-    composer self-update
+    composer self-update --no-interaction
   register: composer_self_update_result
   changed_when: "'You are already using composer' not in composer_self_update_result.stderr"
   tags: hswong3i.composer
