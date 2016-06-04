@@ -1,6 +1,8 @@
 composer_global_require: [
+  "drupal/coder:@stable",
+  "drupal/console:@stable",
   "drush/drush:@stable",
-  "fabpot/php-cs-fixer:@stable",
+  "friendsofphp/php-cs-fixer:@stable",
   "phpunit/phpunit:@stable",
   "sami/sami:@stable",
 ]

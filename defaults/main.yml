@@ -8,8 +8,10 @@ composer_installer_dest: "/tmp/composer-setup.php"
 composer_installer_url: "https://getcomposer.org/installer"
 
 composer_global_require: [
+#  "drupal/coder:@stable",
+#  "drupal/console:@stable",
 #  "drush/drush:@stable",
-#  "fabpot/php-cs-fixer:@stable",
+#  "friendsofphp/php-cs-fixer:@stable",
 #  "phpunit/phpunit:@stable",
 #  "sami/sami:@stable",
 ]
