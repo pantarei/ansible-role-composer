@@ -1,8 +1,9 @@
-composer_global_require: [
-  "drupal/coder:@stable",
-  "drupal/console:@stable",
-  "drush/drush:@stable",
-  "friendsofphp/php-cs-fixer:@stable",
-  "phpunit/phpunit:@stable",
-  "sami/sami:@stable",
+composer_global: [
+  { status: "remove", name: "fabpot/php-cs-fixer" },
+  { status: "require", name: "drupal/coder:@stable" },
+  { status: "require", name: "drupal/console:@stable" },
+  { status: "require", name: "drush/drush:@stable" },
+  { status: "require", name: "friendsofphp/php-cs-fixer:@stable" },
+  { status: "require", name: "phpunit/phpunit:@stable" },
+  { status: "require", name: "sami/sami:@stable" },
 ]
