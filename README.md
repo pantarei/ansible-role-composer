@@ -36,14 +36,14 @@ Role Variables
 </thead>
 <tbody>
 <tr class="odd">
-<td>composer_global_require</td>
+<td>composer_global</td>
 <td>no</td>
 <td><code>[]</code></td>
 <td><ul>
 <li><code>[]</code></li>
 <li><code>list</code></li>
 </ul></td>
-<td>Skip install gloabl packages if <code>[]</code>, or pass list to <code>composer global require</code>.</td>
+<td>Skip install or remove gloabl packages if <code>[]</code>, or pass list to <code>composer global</code>.</td>
 </tr>
 <tr class="even">
 <td>composer_home</td>
@@ -94,11 +94,14 @@ Example Playbook
     - hosts: all
       roles:
         - role: hswong3i.composer
-          composer_global_require:
-            - "drush/drush:@stable"
-            - "fabpot/php-cs-fixer:@stable"
-            - "phpunit/phpunit:@stable"
-            - "sami/sami:@stable"
+          composer_global:
+            - { status: "remove", name: "fabpot/php-cs-fixer" }
+            - { status: "require", name: "drupal/coder:@stable" }
+            - { status: "require", name: "drupal/console:@stable" }
+            - { status: "require", name: "drush/drush:@stable" }
+            - { status: "require", name: "friendsofphp/php-cs-fixer:@stable" }
+            - { status: "require", name: "phpunit/phpunit:@stable" }
+            - { status: "require", name: "sami/sami:@stable" }
 
 License
 -------
