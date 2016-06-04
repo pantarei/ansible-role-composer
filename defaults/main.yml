@@ -3,13 +3,15 @@
 
 composer_home: "/usr/share/composer"
 composer_install_dir: "/usr/bin"
-composer_installer_checksum: "sha384:92102166af5abdb03f49ce52a40591073a7b859a86e8ff13338cf7db58a19f7844fbc0bb79b2773bf30791e935dbd938"
+composer_installer_checksum: "sha384:070854512ef404f16bac87071a6db9fd9721da1684cd4589b1196c3faf71b9a2682e2311b36a5079825e155ac7ce150d"
 composer_installer_dest: "/tmp/composer-setup.php"
 composer_installer_url: "https://getcomposer.org/installer"
 
 composer_global_require: [
+#  "drupal/coder:@stable",
+#  "drupal/console:@stable",
 #  "drush/drush:@stable",
-#  "fabpot/php-cs-fixer:@stable",
+#  "friendsofphp/php-cs-fixer:@stable",
 #  "phpunit/phpunit:@stable",
 #  "sami/sami:@stable",
 ]
