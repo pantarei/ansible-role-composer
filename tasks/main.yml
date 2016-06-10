@@ -45,6 +45,15 @@
     - { src: "usr/share/composer/auth.json.j2", dest: "{{ composer_home}}/auth.json", owner: "root", group: "root", mode: "0644" }
   tags: hswong3i.composer
 
+- name: composer global init
+  shell: |
+    COMPOSER_HOME={{ composer_home }} composer global init --no-interaction
+  args:
+    creates: "{{ composer_home }}/composer.json"
+  register: composer_global_init_result
+  changed_when: composer_global_init_result.rc != 0
+  tags: hswong3i.composer
+
 - name: composer global
   shell: |
     COMPOSER_HOME={{ composer_home }} composer global {{ item.status }} {{ item.name }} --no-interaction --no-update
