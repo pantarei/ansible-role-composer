@@ -1,3 +1,4 @@
+---
 composer_global: [
   { status: "remove", name: "fabpot/php-cs-fixer" },
   { status: "require", name: "drupal/coder:@stable" },
