@@ -5,6 +5,7 @@ composer_global: [
   { status: "require", name: "drupal/console:@stable" },
   { status: "require", name: "drush/drush:@stable" },
   { status: "require", name: "friendsofphp/php-cs-fixer:@stable" },
+  { status: "require", name: "hirak/prestissimo:@stable" },
   { status: "require", name: "phpunit/phpunit:@stable" },
   { status: "require", name: "sami/sami:@stable" },
 ]
