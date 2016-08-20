@@ -3,9 +3,11 @@
 
 - name: download composer installer
   get_url:
-    url: "{{ composer_installer_url }}"
-    dest: "{{ composer_installer_dest }}"
-    checksum: "{{ composer_installer_checksum }}"
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    checksum: "{{ item.checksum }}"
+  with_items:
+    - { url: "{{ composer_installer_url }}", dest: "{{ composer_installer_dest }}", checksum: "{{ composer_installer_checksum }}" }
   tags: hswong3i.composer
 
 - name: install composer with installer
