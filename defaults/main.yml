@@ -3,7 +3,7 @@
 
 composer_home: "/usr/share/composer"
 composer_install_dir: "/usr/bin"
-composer_installer_checksum: "sha384:e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae"
+composer_installer_checksum: "sha384:aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff713d53020a02ac8c217dbf90a7eacc9d141d"
 composer_installer_dest: "/tmp/composer-setup.php"
 composer_installer_url: "https://getcomposer.org/installer"
 
