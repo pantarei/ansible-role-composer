@@ -7,6 +7,10 @@ composer_installer_checksum: "sha384:55d6ead61b29c7bdee5cccfb50076874187bd9f21f6
 composer_installer_dest: "/tmp/composer-setup.php"
 composer_installer_url: "https://getcomposer.org/installer"
 
+composer_global_config: [
+  { key: "minimum-stability", value: "dev" },
+]
+
 composer_global: [
 #  { status: "remove", name: "fabpot/php-cs-fixer" },
 #  { status: "require", name: "drupal/coder:@stable" },

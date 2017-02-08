@@ -56,6 +56,14 @@
   changed_when: composer_global_init_result.rc != 0
   tags: hswong3i.composer
 
+- name: composer global config
+  shell: |
+    COMPOSER_HOME={{ composer_home }} composer global config {{ item.key }} {{ item.value }} --no-interaction
+  with_items: "{{ composer_global_config }}"
+  register: composer_global_config_result
+  changed_when: composer_global_config_result.rc != 0
+  tags: hswong3i.composer
+
 - name: composer global
   shell: |
     COMPOSER_HOME={{ composer_home }} composer global {{ item.status }} {{ item.name }} --no-interaction --no-update
