@@ -81,12 +81,12 @@
   changed_when: "'Nothing to install or update' not in composer_global_update_result.stderr"
   tags: hswong3i.composer
 
-- name: cgr
+- name: cgr require
   shell: |
-    COMPOSER_HOME={{ composer_home }} {{ composer_home }}/vendor/bin/cgr {{ item.status | regex_replace('^require$', '') }} {{ item.name }} {{ item.version | default('') }} --stability {{ item.stability | default('stable') }}
+    COMPOSER_HOME={{ composer_home }} {{ composer_home }}/vendor/bin/cgr require {{ item.name }} {{ item.version | default('@stable') }} --stability {{ item.stability | default('stable') }}
   with_items: "{{ composer_global }}"
-  register: cgr_result
-  changed_when: cgr_result.rc != 0
+  register: cgr_require_result
+  changed_when: cgr_require_result.rc != 0
   tags: hswong3i.composer
 
 - name: cgr update

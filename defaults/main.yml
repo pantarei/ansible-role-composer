@@ -12,12 +12,11 @@ composer_global_config: [
 ]
 
 composer_global: [
-#  { status: "remove", name: "fabpot/php-cs-fixer" },
-#  { status: "require", name: "drupal/coder" }
-#  { status: "require", name: "drupal/console", version: "1.0.0-rc19", stability: "RC" }
-#  { status: "require", name: "drush/drush" }
-#  { status: "require", name: "friendsofphp/php-cs-fixer" }
-#  { status: "require", name: "hirak/prestissimo" }
-#  { status: "require", name: "phpunit/phpunit" }
-#  { status: "require", name: "sami/sami" }
+#  { name: "drupal/coder" }
+#  { name: "drupal/console", version: "1.0.0-rc19", stability: "RC" }
+#  { name: "drush/drush" }
+#  { name: "friendsofphp/php-cs-fixer" }
+#  { name: "phpunit/phpunit", version: "~5.7" }
+#  { name: "sami/sami" }
+#  { name: "squizlabs/php_codesniffer" }
 ]
