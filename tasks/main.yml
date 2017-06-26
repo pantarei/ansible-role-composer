@@ -83,7 +83,7 @@
 
 - name: cgr
   shell: |
-    COMPOSER_HOME={{ composer_home }} {{ composer_home }}/vendor/bin/cgr {{ item.status == 'require' | ternary('', item.status) }} {{ item.name }} {{ item.version | default('') }} --stability {{ item.stability | default('stable') }}
+    COMPOSER_HOME={{ composer_home }} {{ composer_home }}/vendor/bin/cgr {{ item.status | regex_replace('^require$', '') }} {{ item.name }} {{ item.version | default('') }} --stability {{ item.stability | default('stable') }}
   with_items: "{{ composer_global }}"
   register: cgr_result
   changed_when: cgr_result.rc != 0
