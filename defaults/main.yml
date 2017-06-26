@@ -13,11 +13,11 @@ composer_global_config: [
 
 composer_global: [
 #  { status: "remove", name: "fabpot/php-cs-fixer" },
-#  { status: "require", name: "drupal/coder:@stable" },
-#  { status: "require", name: "drupal/console:@stable" },
-#  { status: "require", name: "drush/drush:@stable" },
-#  { status: "require", name: "friendsofphp/php-cs-fixer:@stable" },
-#  { status: "require", name: "hirak/prestissimo:@stable" },
-#  { status: "require", name: "phpunit/phpunit:@stable" },
-#  { status: "require", name: "sami/sami:@stable" },
+#  { status: "require", name: "drupal/coder" }
+#  { status: "require", name: "drupal/console", version: "1.0.0-rc19", stability: "RC" }
+#  { status: "require", name: "drush/drush" }
+#  { status: "require", name: "friendsofphp/php-cs-fixer" }
+#  { status: "require", name: "hirak/prestissimo" }
+#  { status: "require", name: "phpunit/phpunit" }
+#  { status: "require", name: "sami/sami" }
 ]

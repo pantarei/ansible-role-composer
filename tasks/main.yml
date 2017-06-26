@@ -67,7 +67,9 @@
 - name: composer global
   shell: |
     COMPOSER_HOME={{ composer_home }} composer global {{ item.status }} {{ item.name }} --no-interaction --no-update
-  with_items: "{{ composer_global }}"
+  with_items:
+    - { status: 'require', name: 'hirak/prestissimo:@stable' }
+    - { status: 'require', name: 'consolidation/cgr:@stable' }
   register: composer_global_result
   changed_when: composer_global_result.rc != 0
   tags: hswong3i.composer
@@ -77,4 +79,19 @@
     COMPOSER_HOME={{ composer_home }} composer global update --no-interaction
   register: composer_global_update_result
   changed_when: "'Nothing to install or update' not in composer_global_update_result.stderr"
+  tags: hswong3i.composer
+
+- name: cgr
+  shell: |
+    COMPOSER_HOME={{ composer_home }} cgr {{ item.status == 'require' | ternary('', item.status) }} {{ item.name }} {{ item.version | default('') }} --stability {{ item.stability | default('stable') }}
+  with_items: "{{ composer_global }}"
+  register: cgr_result
+  changed_when: cgr_result.rc != 0
+  tags: hswong3i.composer
+
+- name: cgr update
+  shell: |
+    COMPOSER_HOME={{ composer_home }} cgr update
+  register: cgr_update_result
+  changed_when: "'Package operations:' in cgr_update_result.stderr"
   tags: hswong3i.composer
